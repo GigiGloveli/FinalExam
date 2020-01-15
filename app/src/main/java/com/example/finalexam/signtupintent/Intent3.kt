@@ -3,59 +3,74 @@ package com.example.finalexam.signtupintent
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bumptech.glide.Glide
-import com.example.finalexam.LoginActivity
-import com.example.finalexam.finalexam.db
+import android.text.TextUtils
+import android.widget.Toast
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
 import ge.msda.Finalexam.R
-import kotlinx.android.synthetic.main.activity_intent3.*
+import kotlinx.android.synthetic.main.activity_sign_up.*
+import java.util.jar.Attributes
 
-class Intent3 : AppCompatActivity() {
+class Intent4 : AppCompatActivity() {
+
     private lateinit var auth: FirebaseAuth
-    private lateinit var dbs: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_intent3)
-
-        dbs = FirebaseDatabase.getInstance().getReference("db")
+        setContentView(R.layout.activity_sign_up)
         auth = FirebaseAuth.getInstance()
-        intentphoto.setOnClickListener {
 
-            val photourl1 = photourl.text.toString()
-           Glide.with(applicationContext).load(photourl1).into(intentphoto)
-            intentphoto.setImageResource(0)
+        nextbtn.setOnClickListener {
+
+            val email: String = emaill.text.toString()
+            val password: String = password.text.toString()
+            val verifypass = passwordver.text.toString()
+
+
+            if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
+
+                Toast.makeText(this, "გთხოვთ შეავსოთ ყველა ველი", Toast.LENGTH_SHORT).show()
+
+            } else {
+              if (password == verifypass) {
+                  auth.createUserWithEmailAndPassword(email, password)
+                      .addOnCompleteListener(this, OnCompleteListener { task ->
+
+                          if (task.isSuccessful) {
+
+                              auth.signInWithEmailAndPassword(email, password)
+                                  .addOnCompleteListener(this, OnCompleteListener { task ->
+                                      if (task.isSuccessful) {
+                                          val intent = Intent(this, Intent1::class.java)
+                                          startActivity(intent)
+                                          finish()
+
+                                      } else {
+
+                                          Toast.makeText(
+                                              this,
+                                              "შეიქმნა მარა ვერშევიდა !!",
+                                              Toast.LENGTH_SHORT
+                                          ).show()
+                                      }
+                                  })
+                          } else {
+
+                              Toast.makeText(this, "ვერ შეიქმნა !!", Toast.LENGTH_SHORT).show()
+
+                          }
+                      })
+              }else{
+
+                  Toast.makeText(this,"პაროლები არ ემთხვევა !!",Toast.LENGTH_SHORT).show()
+              }
+
+            }
+
         }
 
-        next3btn.setOnClickListener {
 
-            val name = intent.extras?.getString("NAME", "saxeli")
-            val surname = intent.extras?.getString("SURNAME", "gvari")
-            val age = intent.extras?.getString("AGE", "asaki")
-            val number = intent.extras?.getString("NUMBER", "nomeri")
-            val gender = intent.extras?.getString("GENDER", "genderi")
-            val url = photourl.text.toString()
-
-            infoset(name!!, surname!!, age!!, number!!, gender!!, url)
-            val intent = Intent(this, LoginActivity::class.java)
-            auth.signOut()
-            startActivity(intent)
-
-
-
-        }
-    }
-
-
-    private fun infoset(name: String, surname: String, age: String, phone: String, gender: String, url: String) {
-
-        val database = db(name, surname, age, phone,gender, url)
-
-        dbs.child(auth.currentUser?.uid!!).setValue(database)
     }
 
 
 }
-
-
