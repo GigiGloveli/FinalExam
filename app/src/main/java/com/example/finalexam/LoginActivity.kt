@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.finalexam.signtupintent.Intent4
+import com.example.finalexam.signtupintent.Intent3
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import ge.msda.Finalexam.R
@@ -50,7 +50,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         signUpBtn.setOnClickListener {
-            val intent = Intent(this, Intent4::class.java)
+            val intent = Intent(this, Intent3::class.java)
             startActivity(intent)
             finish()
         }

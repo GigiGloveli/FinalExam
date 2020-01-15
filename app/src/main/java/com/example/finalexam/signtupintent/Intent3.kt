@@ -11,7 +11,7 @@ import ge.msda.Finalexam.R
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import java.util.jar.Attributes
 
-class Intent4 : AppCompatActivity() {
+class Intent3 : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
 

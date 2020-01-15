@@ -17,10 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name="com.example.finalexam.signtupintent.Intent3"
-            android:configChanges="screenSize|keyboardHidden"
-            android:screenOrientation="portrait" />
+
         <activity
             android:name="com.example.finalexam.signtupintent.Intent2"
             android:configChanges="screenSize|keyboardHidden"
@@ -40,7 +37,7 @@
             android:configChanges="screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.example.finalexam.signtupintent.Intent4"
+            android:name="com.example.finalexam.signtupintent.Intent3"
             android:configChanges="screenSize|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity

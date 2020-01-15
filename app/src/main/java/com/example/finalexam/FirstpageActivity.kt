@@ -78,7 +78,6 @@ class FirstpageActivity : AppCompatActivity() {
                     genderview.text = "სქესი - ${data.gender}"
                     mailview.text = "მეილი - ${auth.currentUser?.email.toString()}"
 
-                    glidepic = data.url
 
                 }
 

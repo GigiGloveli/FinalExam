@@ -8,7 +8,6 @@ data class db(
     var surname: String = "",
     var age: String = "",
     var number: String? = "",
-    var gender: String = "",
-    var url: String = ""
+    var gender: String = ""
 
 )
