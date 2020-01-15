@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.finalexam.signtupintent.Intent4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/emaill"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Email:" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="პაროლი:"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/passwordver"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="გაიმეორეთ პაროლი:"
+            android:inputType="textPassword" />
+
+        <Button
+            android:layout_marginTop="40dp"
+            android:id="@+id/nextbtn"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="შემდეგ" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
